@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('achievement_committees', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('committee_id')->constrained('committees', 'id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('activity');
+            $table->string('feat');
+            $table->string('year');
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('achievement_committees');
     }
 };

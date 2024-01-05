@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('portfolio_committees', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('committee_id')->constrained('committees', 'id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name');
+            $table->string('proof');
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('portfolio_committees');
     }
 };
