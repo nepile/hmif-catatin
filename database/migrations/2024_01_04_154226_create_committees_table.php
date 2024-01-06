@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('domicile_address');
             $table->string('email');
             $table->string('no_wa');
+            $table->string('gen');
             $table->timestamps();
         });
     }

@@ -20,7 +20,8 @@ class Committee extends Model
         'origin_address',
         'domicile_address',
         'email',
-        'no_wa'
+        'no_wa',
+        'gen'
     ];
 
     public function division(): BelongsTo
