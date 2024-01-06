@@ -8,38 +8,38 @@
         </div>
     </div>
     <ul class="sidebar-nav">
-        <li class="sidebar-item sidebar-active">
+        <li class="sidebar-item {{ $id_page == 'core-overview' ? 'sidebar-active' : null }}">
             <a href="{{ route('overview') }}" class="sidebar-link">
                 <i class="lni lni-home"></i>
                 <span>Catatin Overview</span>
             </a>
         </li>
-        <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+        <li class="sidebar-item {{ $id_page == 'core-coordinator' ? 'sidebar-active' : null }}">
+            <a href="{{ route('coordinator') }}" class="sidebar-link">
                 <i class="lni lni-coral"></i>
                 <span>Catatin Coordinators</span>
             </a>
         </li>
-        <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+        <li class="sidebar-item {{ $id_page == 'core-committee' ? 'sidebar-active' : null }}">
+            <a href="{{ route('committee') }}" class="sidebar-link">
                 <i class="lni lni-users"></i>
                 <span>Catatin Committees</span>
             </a>
         </li>
-        <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+        <li class="sidebar-item {{ $id_page == 'core-leaderboard' ? 'sidebar-active' : null }}">
+            <a href="{{ route('leaderboard') }}" class="sidebar-link">
                 <i class="lni lni-graduation"></i>
                 <span>Catatin Leaderboard</span>
             </a>
         </li>
-        <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+        <li class="sidebar-item {{ $id_page == 'core-interview' ? 'sidebar-active' : null }}">
+            <a href="{{ route('interview') }}" class="sidebar-link">
                 <i class="lni lni-clipboard"></i>
                 <span>Catatin Interview</span>
             </a>
         </li>
-        <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+        <li class="sidebar-item {{ $id_page == 'core-setting' ? 'sidebar-active' : null }}">
+            <a href="{{ route('setting') }}" class="sidebar-link">
                 <i class="lni lni-cog"></i>
                 <span>Catatin Setting</span>
             </a>

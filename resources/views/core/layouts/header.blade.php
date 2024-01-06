@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mb-4">
     <!-- Logo -->
     <div class="col-md-6">
         <div class="d-flex align-items-center">
