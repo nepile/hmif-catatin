@@ -19,9 +19,9 @@
     <div class="col-12">
         <div class="card mt-4">
             <div class="card-body">
-                <h5 class="card-title">Balance</h5>
-                <p class="card-text">Your current balance is $500.00</p>
-                <button class="btn btn-dark">Withdraw</button>
+                <h5 class="card-title">Catatin Interview</h5>
+                <p class="card-text">Make it easier to summarize for committee selection!</p>
+                <button class="btn btn-dark">Interview Now</button>
             </div>
         </div>
     </div>

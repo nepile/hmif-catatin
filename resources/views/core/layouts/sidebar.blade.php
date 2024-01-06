@@ -11,37 +11,37 @@
         <li class="sidebar-item sidebar-active">
             <a href="{{ route('overview') }}" class="sidebar-link">
                 <i class="lni lni-home"></i>
-                <span>Home</span>
+                <span>Catatin Overview</span>
             </a>
         </li>
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
                 <i class="lni lni-coral"></i>
-                <span>Coordinators</span>
+                <span>Catatin Coordinators</span>
             </a>
         </li>
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
                 <i class="lni lni-users"></i>
-                <span>Committees</span>
+                <span>Catatin Committees</span>
             </a>
         </li>
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
                 <i class="lni lni-graduation"></i>
-                <span>Leaderboard</span>
+                <span>Catatin Leaderboard</span>
             </a>
         </li>
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
                 <i class="lni lni-clipboard"></i>
-                <span>Interview</span>
+                <span>Catatin Interview</span>
             </a>
         </li>
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
                 <i class="lni lni-cog"></i>
-                <span>Setting</span>
+                <span>Catatin Setting</span>
             </a>
         </li>
         <li class="sidebar-item mt-5">
