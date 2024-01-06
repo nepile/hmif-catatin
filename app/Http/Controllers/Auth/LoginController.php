@@ -17,7 +17,12 @@ class LoginController extends Controller
      */
     public function showLogin(): View
     {
-        return view();
+        $data = [
+            'title'     => 'Silakan login untuk mendapatkan aksesbilitas!',
+            'id_page'   => 'auth-login'
+        ];
+
+        return view('auth.login', $data);
     }
 
     /**
