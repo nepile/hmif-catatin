@@ -16,39 +16,26 @@
         </li>
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
-                <i class="lni lni-stats-up"></i>
-                <span>Analytics</span>
+                <i class="lni lni-coral"></i>
+                <span>Coordinators</span>
             </a>
         </li>
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
-                <i class="lni lni-calendar"></i>
-                <span>Calendar</span>
+                <i class="lni lni-users"></i>
+                <span>Committees</span>
             </a>
         </li>
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
-                <i class="lni lni-layout"></i>
-                <span>Events</span>
+                <i class="lni lni-graduation"></i>
+                <span>Leaderboard</span>
             </a>
-            <ul class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">Porsi</a>
-                    <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Panitia</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Peserta</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
         </li>
         <li class="sidebar-item">
             <a href="#" class="sidebar-link">
-                <i class="lni lni-coin"></i>
-                <span>Keuangan</span>
+                <i class="lni lni-clipboard"></i>
+                <span>Interview</span>
             </a>
         </li>
         <li class="sidebar-item">
@@ -56,20 +43,6 @@
                 <i class="lni lni-cog"></i>
                 <span>Setting</span>
             </a>
-        </li>
-        <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
-                <i class="lni lni-protection"></i>
-                <span>Account</span>
-            </a>
-            <ul class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">Login</a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">Register</a>
-                </li>
-            </ul>
         </li>
         <li class="sidebar-item mt-5">
             <a href="#" class="sidebar-link">

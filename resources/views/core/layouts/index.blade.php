@@ -11,6 +11,7 @@
 <div class="wrapper" style="height: 100vh;">
     @include('core.layouts.sidebar')
     <div class="container content p-3">
+    @include('core.layouts.header')
     @yield('core-content')
     </div>
 </div>
