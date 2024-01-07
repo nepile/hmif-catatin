@@ -13,18 +13,18 @@ return new class extends Migration
     {
         Schema::create('committees', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('divison_id')->nullable()->constrained('divisions', 'id')->nullOnDelete()->cascadeOnUpdate();
-            $table->string('full_name');
-            $table->string('call_name');
+            $table->foreignId('division_id')->nullable()->constrained('divisions', 'id')->nullOnDelete()->cascadeOnUpdate(); // temp
+            $table->string('full_name'); // temp
+            $table->string('call_name')->nullable();
             $table->enum('gender', ['Laki-laki', 'Perempuan'])->nullable()->default(null);
-            $table->string('nim');
-            $table->string('place_born');
-            $table->string('date_born');
-            $table->string('origin_address');
-            $table->string('domicile_address');
-            $table->string('email');
-            $table->string('no_wa');
-            $table->string('gen');
+            $table->string('nim'); // temp
+            $table->string('place_born')->nullable();
+            $table->string('date_born')->nullable();
+            $table->string('origin_address')->nullable();
+            $table->string('domicile_address')->nullable();
+            $table->string('email')->nullable();
+            $table->string('no_wa')->nullable();
+            $table->string('gen'); // temp
             $table->timestamps();
         });
     }

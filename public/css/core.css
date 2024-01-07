@@ -9,6 +9,15 @@ a {
     text-decoration: none;
 }
 
+.bg-favorite {
+    background: #072C50;
+    color: #fff;
+}
+
+.border-radius-none {
+    border-radius: 0;
+}
+
 li {
     list-style: none;
 }

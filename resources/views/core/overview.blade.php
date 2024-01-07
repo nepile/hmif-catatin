@@ -21,7 +21,7 @@
             <div class="card-body">
                 <h5 class="card-title">Catatin Interview</h5>
                 <p class="card-text">Make it easier to summarize for committee selection!</p>
-                <button class="btn btn-dark">Interview Now</button>
+                <a href="{{ route('interview') }}" class="btn btn-dark">Interview Now</a>
             </div>
         </div>
     </div>

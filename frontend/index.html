@@ -15,32 +15,39 @@
   <section>
     <div class="container-fluid" style="min-height: 100vh">
       <div class="row">
-        <div class="col-sm-7 text-black m-auto">
+        <div class="col-lg-7 col-12 text-black m-auto">
           <!-- Login Form Section -->
-          <div class="d-flex align-items-center h-custom-2 justify-content-center px-5 mt-5 pt-5 pt-xl-0 mt-xl-n5"
+          <div
+            class="d-flex align-items-center h-custom-2 justify-content-center px-lg=5 px-3 mt-5 pt-5 pt-xl-0 mt-xl-n5"
             style="margin-left: -20px">
-            <form id="form-login" style="width: 70%">
+            <form id="form-login">
+              <div class="d-flex align-items-lg-center align-items-start mb-4">
+                <img src="./img/logo.png" class="me-3" width="40" height="40" alt="">
+                <h4 style="font-weight: bold;">HMIF | Catatin!</h4>
+              </div>
+              <hr>
               <h3 class="fw-normal" style="letter-spacing: 1px">
                 Welcome Back 👋
               </h3>
-              <p class="fw-normal mb-3 pb-3">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              <p class="fw-normal mb-1 pb-3">
+                Please login to have accessbility with your available account!
               </p>
 
               <div class="form-outline mb-4">
                 <label class="form-label" for="emailUser">NIM</label>
-                <input type="email" id="emailUser" class="form-control form-control-lg" placeholder="Enter your NIM" />
+                <input type="email" id="emailUser" class="form-control form-control-lg" style="font-size:17px;"
+                  placeholder="Enter your nim" />
               </div>
 
               <div class="form-outline mb-4">
                 <label class="form-label" for="passwordUser">Password</label>
                 <input type="password" id="passwordUser" class="form-control form-control-lg"
-                  placeholder="Enter your password" />
+                  placeholder="Enter your password" style="font-size: 17px;" />
               </div>
 
               <div class="pt-1 mb-4">
-                <button class="btn btn-info btn-lg btn-block w-50 text-white" type="button"
-                  style="background: #05284A;">
+                <button class="btn btn-info btn-lg btn-block w-100 text-white" type="button"
+                  style="background: #05284A; font-size: 17px;">
                   Login
                 </button>
               </div>
@@ -48,34 +55,14 @@
           </div>
         </div>
         <!-- Right Section -->
-        <div class="col-sm-5 px-0 d-none d-sm-block position-relative" style="height: 100vh; background: #05284A;">
+        <div class="col-lg-5 px-0 d-none d-sm-block position-relative" style="height: 100vh; background: #05284A;">
           <div class="d-flex flex-column position-absolute top-50" style="transform: translate(-20%, -50%)">
             <img src="img/gambar login.png" alt="" class="img-fluid" />
           </div>
         </div>
-        <div class="gelombang">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#fff" fill-opacity="1"
-              d="M0,96L80,117.3C160,139,320,181,480,208C640,235,800,245,960,213.3C1120,181,1280,107,1360,69.3L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
-            </path>
-          </svg>
-        </div>
       </div>
     </div>
   </section>
-
-  <script>
-    const gelombang = document.querySelector(".gelombang");
-    function toggleGelombang() {
-      if (window.innerWidth <= 767) {
-        gelombang.classList.remove("d-none");
-      } else {
-        gelombang.classList.add("d-none");
-      }
-    }
-
-    toggleGelombang();
-  </script>
 </body>
 
 </html>

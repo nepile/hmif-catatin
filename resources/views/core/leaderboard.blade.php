@@ -1,5 +1,7 @@
 @extends('core.layouts.index')
 
 @section('core-content')
-    this leaderboard view
+<div class="row">
+    
+</div>
 @endsection
