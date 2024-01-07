@@ -44,11 +44,5 @@
                 <span>Catatin Setting</span>
             </a>
         </li>
-        <li class="sidebar-item mt-5">
-            <a href="#" class="sidebar-link">
-                <i class="lni lni-exit"></i>
-                <span>Logout</span>
-            </a>
-        </li>
     </ul>
 </aside>

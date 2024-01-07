@@ -7,9 +7,9 @@
             
             <!-- Name Admin and Short Paragraph -->
             <div class="mt-2">
-                <h5 style="font-weight: bold">Neville Jeremy</h5>
+                <h5 style="font-weight: bold">{{ auth()->user()->name }}</h5>
                 <p>
-                    Kepala WebHolder
+                    {{ auth()->user()->role->name }}
                 </p>
             </div>
         </div>
@@ -33,7 +33,10 @@
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="#">Logout</a></li>
+                <form method="POST" action="{{ route('handle-logout') }}">
+                    @csrf 
+                    <button type="submit" class="dropdown-item" href="#">Logout</button>
+                </form>
             </ul>
         </div>
     </div>

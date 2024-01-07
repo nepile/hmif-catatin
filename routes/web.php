@@ -9,9 +9,11 @@ use App\Http\Controllers\Core\OverviewController;
 use App\Http\Controllers\Core\SettingController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
+Route::get('/', [LoginController::class, 'showLogin'])->name('login');
+Route::post('/handle-login', [LoginController::class, 'handleLogin'])->name('handle-login');
+Route::post('/handle-logout', [LoginController::class, 'handleLogout'])->name('handle-logout');
 
-Route::prefix('/core')->group(function () {
+Route::middleware('auth')->prefix('/core')->group(function () {
     Route::get('/overview', [OverviewController::class, 'showOverview'])->name('overview');
     Route::get('/coordinator', [CoordinatorController::class, 'showCoordinator'])->name('coordinator');
     Route::get('/committee', [CommitteeController::class, 'showCommittee'])->name('committee');

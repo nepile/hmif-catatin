@@ -42,6 +42,17 @@ class LoginController extends Controller
             return redirect()->route('overview')->with('success', 'Berhasil masuk!');
         }
 
-        return back()->with('error', 'Maaf, nim atau password invalid');
+        return back()->with('failure', 'Maaf, nim atau password invalid')->withInput();
+    }
+
+    /**
+     * Handle logout requetst
+     * 
+     * @return RedirectResponse
+     */
+    public function handleLogout(): RedirectResponse
+    {
+        Auth::logout();
+        return redirect()->route('login')->with('info', 'Anda telah keluar dari sesi!');
     }
 }
