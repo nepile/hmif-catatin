@@ -21,7 +21,7 @@ class CoordinatorController extends Controller
             'user'  => new User,
             'division'  => new Division,
         ];
-        $this->coors = $this->model['user']->where('role_id', 4)->get();
+        $this->coors = $this->model['user']->where('role_id', 4)->paginate(2);
     }
     /**
      * Show coordinator view

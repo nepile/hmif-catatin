@@ -54,6 +54,9 @@
         <form action="{{ route('search-coordinator') }}" method="GET" class="col-lg-3 col-12 d-flex mb-4 justify-content-between align-items-center">
             <input required type="text" class="form-control border-radius-none" name="query" placeholder="Search by name" id="">
             <button type="submit" class="btn btn-dark border-radius-none">Search</button>
+            @if (request()->routeIs('search-coordinator'))
+            <a href="{{ route('coordinator') }}" type="button" class="btn btn-dark border-radius-none ms-2">Back</a>
+            @endif
         </form>
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
@@ -139,6 +142,16 @@
                 </tbody>
             </table>
         </div>
+        
+
+        <div class="d-flex justify-content-between">
+            @if (!$coors->isEmpty())
+                
+            <p>Showing {{ $coors->firstItem() }} to {{ $coors->lastItem() }} of {{ $coors->total() }} entries</p>
+            {{ $coors->links() }}
+            @endif
+        </div>
+
     </div>
 </div>
 @endsection
