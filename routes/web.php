@@ -18,6 +18,9 @@ Route::middleware('auth')->prefix('/core')->group(function () {
     Route::prefix('/coordinator')->group(function () {
         Route::get('/', [CoordinatorController::class, 'showCoordinator'])->name('coordinator');
         Route::get('/search-coordinator', [CoordinatorController::class, 'searchCoordinator'])->name('search-coordinator');
+        Route::post('/create-coordinator', [CoordinatorController::class, 'createCoordinator'])->name('create-coordinator');
+        Route::put('/update-coordinator/{id}', [CoordinatorController::class, 'updateCoordinator'])->name('update-coordinator');
+        Route::delete('/delete-coordinator/{id}', [CoordinatorController::class, 'deleteCoordinator'])->name('delete-coordinator');
     });
     Route::get('/committee', [CommitteeController::class, 'showCommittee'])->name('committee');
     Route::get('/leaderboard', [LeaderBoardController::class, 'showLeaderboard'])->name('leaderboard');

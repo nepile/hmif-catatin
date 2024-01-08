@@ -9,7 +9,41 @@
                 <p>
                     This menu is collect for all data of the person in charge of the division
                 </p>
-                <button class="btn bg-favorite mt-2">Create Coordinator</button>
+                <button class="btn bg-favorite mt-2" data-bs-toggle="modal" data-bs-target="#create">Create Coordinator</button>
+                <div class="modal fade" id="create" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form method="POST" action="{{ route('create-coordinator') }}" class="modal-content">
+                            @csrf
+                            <div class="modal-body">
+                                <div class="my-2">    
+                                    <input type="text" class="form-control" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="my-2">    
+                                    <input type="text" class="form-control" name="nim" placeholder="NIM" required>
+                                </div>
+                                <div class="my-2">    
+                                    <select name="division_id" required class="form-control">
+                                        <option value="">Select Division</option>
+                                        @foreach ($divisions as $division)
+                                            <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="my-2">    
+                                    <select name="gen" required class="form-control">
+                                        <option value="">Select Gen</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer border-0">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn bg-favorite">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -44,8 +78,61 @@
                         <td>{{ $coor->division->name}}</td>
                         <td>{{ $coor->gen }}</td>
                         <td>
-                            <button class="btn btn-primary"><i class="lni lni-cog"></i></button>
-                            <button class="btn btn-danger"><i class="lni lni-eraser"></i></button>
+                            {{-- update modal --}}
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="{{ '#update'.$coor->id }}"><i class="lni lni-cog"></i></button>
+                            <div class="modal fade" id="{{ 'update'.$coor->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form method="POST" action="{{ route('update-coordinator', $coor->id) }}" class="modal-content">
+                                        @method('PUT')
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="my-2">    
+                                                <input type="text" value="{{ $coor->name }}" class="form-control" name="name" placeholder="Name" required>
+                                            </div>
+                                            <div class="my-2">    
+                                                <input type="text" value="{{ $coor->nim }}" class="form-control" name="nim" placeholder="NIM" required>
+                                            </div>
+                                            <div class="my-2">    
+                                                <select name="division_id" required class="form-control">
+                                                    <option value="{{ $coor->division_id }}" class="text-primary">{{ $coor->division->name }}</option>
+                                                    @foreach ($divisions as $division)
+                                                        <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="my-2">    
+                                                <select name="gen" required class="form-control">
+                                                    <option value="{{ $coor->gen }}" class="text-primary">{{ $coor->gen }}</option>
+                                                    <option value="2022">2022</option>
+                                                    <option value="2023">2023</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer border-0">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn bg-primary">Update</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            {{-- delete modal --}}
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="{{ '#delete'.$coor->id }}"><i class="lni lni-eraser"></i></button>
+                            <div class="modal fade" id="{{ 'delete'.$coor->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form method="POST" action="{{ route('delete-coordinator', $coor->id) }}" class="modal-content">
+                                        @method('DELETE')
+                                        @csrf
+                                        <div class="modal-body">
+                                           <p>Are you sure to delete <strong>{{ $coor->name }} ({{ $coor->nim }})</strong>?</p>
+                                        </div>
+                                        <div class="modal-footer border-0">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     @endforeach
