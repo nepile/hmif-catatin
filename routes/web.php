@@ -15,7 +15,10 @@ Route::post('/handle-logout', [LoginController::class, 'handleLogout'])->name('h
 
 Route::middleware('auth')->prefix('/core')->group(function () {
     Route::get('/overview', [OverviewController::class, 'showOverview'])->name('overview');
-    Route::get('/coordinator', [CoordinatorController::class, 'showCoordinator'])->name('coordinator');
+    Route::prefix('/coordinator')->group(function () {
+        Route::get('/', [CoordinatorController::class, 'showCoordinator'])->name('coordinator');
+        Route::get('/search-coordinator', [CoordinatorController::class, 'searchCoordinator'])->name('search-coordinator');
+    });
     Route::get('/committee', [CommitteeController::class, 'showCommittee'])->name('committee');
     Route::get('/leaderboard', [LeaderBoardController::class, 'showLeaderboard'])->name('leaderboard');
     Route::get('/interview', [InterviewController::class, 'showInterview'])->name('interview');
