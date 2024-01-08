@@ -1,11 +1,8 @@
 <div class="row mb-4">
-    <!-- Logo -->
-    <div class="col-md-6">
+    <div class="col-md-10">
         <div class="d-flex align-items-center">
-            <!-- Logo -->
             <img src="{{ asset('img/logo.png') }}" alt="Logo" class="me-4" width="65" height="65" />
-            
-            <!-- Name Admin and Short Paragraph -->
+        
             <div class="mt-2">
                 <h5 style="font-weight: bold">{{ auth()->user()->name }}</h5>
                 <p>
@@ -16,16 +13,9 @@
     </div>
     
     <!-- Buttons and Account Dropdown -->
-    <div class="col-md-6 d-flex justify-content-start justify-content-lg-end align-items-center mb-4 mt-2 mb-lg-0 mt-lg-0">
-        <button class="btn btn-outline-dark me-2" style="height: 40px">
-            <i class="lni lni-search d-none"></i> Search
-        </button>
-            
-            
-            <!-- Account Icon -->
-        <div class="dropdown">
-                <button class="btn btn-outline-dark dropdown-toggle" type="button" id="accountDropdown"
-                data-bs-toggle="dropdown" aria-expanded="false">
+    <div class="col-md-2 d-flex justify-content-start justify-content-lg-end align-items-center mb-4 mt-3 mb-lg-0 mt-lg-0">
+        <div class="dropdown col-12">
+            <button class="btn btn-outline-dark dropdown-toggle" type="button" style="width: 100%" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="lni lni-user"></i> Account
             </button>
             <ul class="dropdown-menu" aria-labelledby="accountDropdown">
