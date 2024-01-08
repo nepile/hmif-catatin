@@ -8,6 +8,21 @@
         <div
           class="d-flex align-items-center h-custom-2 justify-content-center px-lg=5 px-3 mt-5 pt-5 pt-xl-0 mt-xl-n5"
           style="margin-left: -20px">
+          @auth
+            <div class="col-lg-9 mb-sm-5 mb-0">
+              
+             <h2 style="font-weight: bold">Hi there!</h2>
+             <p style="font-size: 20px">
+              Please logout if you wanna login again! 
+             </p>
+
+             <button class="btn btn-secondary" onclick="history.back()">Kembali</button>
+             <form action="{{ route('handle-logout') }}" class="d-inline" method="POST">
+              @csrf  
+              <button class="btn text-light" style="background:#05284A;">Logout</button>
+             </form>
+            </div>
+          @else
           <form id="form-login" action="{{ route('handle-login') }}" method="POST">
             @csrf
             <div class="d-flex align-items-lg-center align-items-start mb-4">
@@ -45,6 +60,7 @@
               </button>
             </div>
           </form>
+          @endauth
         </div>
       </div>
       <!-- Right Section -->
