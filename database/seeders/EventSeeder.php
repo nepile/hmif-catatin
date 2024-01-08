@@ -14,11 +14,7 @@ class EventSeeder extends Seeder
     public function run(): void
     {
         DB::table('events')->insert([
-            [
-                'name'      => 'PORSI',
-                'coor_id'  => 3,
-                'leader_id' => 4,
-            ],
+            ['name'      => 'PORSI'],
         ]);
     }
 }

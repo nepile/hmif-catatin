@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('nim')->unique();
             $table->foreignId('role_id')->constrained('roles', 'id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('division_id')->nullable()->constrained('divisions', 'id')->nullOnDelete()->cascadeOnUpdate();
             $table->string('gen');
             $table->string('password');
             $table->timestamps();

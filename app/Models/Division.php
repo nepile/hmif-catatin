@@ -11,14 +11,8 @@ class Division extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'coor_id',
         'event_id'
     ];
-
-    public function coor(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'coor_id');
-    }
 
     public function event(): BelongsTo
     {
