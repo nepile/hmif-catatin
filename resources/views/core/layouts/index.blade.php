@@ -2,13 +2,21 @@
 @push('core-style')
 <link rel="stylesheet" href="{{ asset('css/core.css') }}" />
 <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+<style>
+    /*untuk media query wrapper*/
+    @media (min-width: 992px) {
+        .wrapper {
+            padding-left: 50px;
+        }
+    }
+</style>
 @endpush
 
 @section('content')
 
 @include('core.layouts.navbar')
 
-<div class="wrapper" style="height: 100vh;">
+<div class="wrapper" style="height: 100vh;;">
     @include('core.layouts.sidebar')
     <div class="container content p-3">
     @include('core.layouts.header')

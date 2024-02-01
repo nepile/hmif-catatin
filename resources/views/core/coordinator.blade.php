@@ -118,16 +118,17 @@
                                     </form>
                                 </div>
                             </div>
-                            
-                            {{-- delete modal --}}
-                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="{{ '#delete'.$coor->id }}"><i class="lni lni-eraser"></i></button>
+                            {{-- Delete Modal --}}
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="{{ '#delete'.$coor->id }}">
+                                <i class="lni lni-eraser"></i>
+                            </button>
                             <div class="modal fade" id="{{ 'delete'.$coor->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <form method="POST" action="{{ route('delete-coordinator', $coor->id) }}" class="modal-content">
                                         @method('DELETE')
                                         @csrf
                                         <div class="modal-body">
-                                           <p>Are you sure to delete <strong>{{ $coor->name }} ({{ $coor->nim }})</strong>?</p>
+                                            <p>Are you sure to delete <strong>{{ $coor->name }} ({{ $coor->nim }})</strong>?</p>
                                         </div>
                                         <div class="modal-footer border-0">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -136,6 +137,7 @@
                                     </form>
                                 </div>
                             </div>
+
                         </td>
                     </tr>
                     @endforeach
