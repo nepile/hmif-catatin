@@ -51,9 +51,7 @@
                                         <div class="my-2">
                                             <input type="text" value="{{ $committee->full_name }}" class="form-control" name="full_name" placeholder="Full Name" required>
                                         </div>
-                                        <div class="my-2">
-                                            <input type="text" value="{{ $committee->call_name }}" class="form-control" name="call_name" placeholder="Call Name" required>
-                                        </div>
+                                    
                                         <div class="my-2">
                                             <select name="division_id" required class="form-control">
                                                 <option value="{{ $committee->division_id }}" class="text-primary">{{ $committee->division->name }}</option>
@@ -62,30 +60,11 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="my-2">
-                                            <input type="text" value="{{ $committee->gender }}" class="form-control" name="gender" placeholder="Gender" required>
-                                        </div>
+                                     
                                         <div class="my-2">
                                             <input type="text" value="{{ $committee->nim }}" class="form-control" name="nim" placeholder="NIM" required>
                                         </div>
-                                        <div class="my-2">
-                                            <input type="text" value="{{ $committee->place_born }}" class="form-control" name="place_born" placeholder="Place of Birth" required>
-                                        </div>
-                                        <div class="my-2">
-                                            <input type="date" value="{{ $committee->date_born }}" class="form-control" name="date_born" placeholder="Date of Birth" required>
-                                        </div>
-                                        <div class="my-2">
-                                            <input type="text" value="{{ $committee->origin_address }}" class="form-control" name="origin_address" placeholder="Origin Address" required>
-                                        </div>
-                                        <div class="my-2">
-                                            <input type="text" value="{{ $committee->domicile_address }}" class="form-control" name="domicile_address" placeholder="Domicile Address" required>
-                                        </div>
-                                        <div class="my-2">
-                                            <input type="email" value="{{ $committee->email }}" class="form-control" name="email" placeholder="Email" required>
-                                        </div>
-                                        <div class="my-2">
-                                            <input type="text" value="{{ $committee->no_wa }}" class="form-control" name="no_wa" placeholder="WhatsApp Number" required>
-                                        </div>
+                                       
                                         <div class="my-2">
                                             <select name="gen" required class="form-control">
                                                 <option value="{{ $committee->gen }}" class="text-primary">{{ $committee->gen }}</option>
@@ -139,9 +118,6 @@
                     <input type="text" class="form-control" name="full_name" placeholder="Full Name" required>
                 </div>
                 <div class="my-2">    
-                    <input type="text" class="form-control" name="call_name" placeholder="Call Name" required>
-                </div>
-                <div class="my-2">    
                     <select name="division_id" required class="form-control">
                         <option value="">Select Division</option>
                         @foreach ($divisions as $division)
@@ -149,30 +125,11 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="my-2">    
-                    <input type="text" class="form-control" name="gender" placeholder="Gender" required>
-                </div>
+             
                 <div class="my-2">    
                     <input type="text" class="form-control" name="nim" placeholder="NIM" required>
                 </div>
-                <div class="my-2">    
-                    <input type="text" class="form-control" name="place_born" placeholder="Place of Birth" required>
-                </div>
-                <div class="my-2">    
-                    <input type="date" class="form-control" name="date_born" placeholder="Date of Birth" required>
-                </div>
-                <div class="my-2">    
-                    <input type="text" class="form-control" name="origin_address" placeholder="Origin Address" required>
-                </div>
-                <div class="my-2">    
-                    <input type="text" class="form-control" name="domicile_address" placeholder="Domicile Address" required>
-                </div>
-                <div class="my-2">    
-                    <input type="email" class="form-control" name="email" placeholder="Email" required>
-                </div>
-                <div class="my-2">    
-                    <input type="text" class="form-control" name="no_wa" placeholder="WhatsApp Number" required>
-                </div>
+                
                 <div class="my-2">    
                     <select name="gen" required class="form-control">
                         <option value="">Select Gen</option>

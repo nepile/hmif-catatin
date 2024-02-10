@@ -37,16 +37,8 @@ class CommitteeController extends Controller
         try {
             $request->validate([
                 'division_id'      => 'required',
-                'full_name'        => 'required',
-                'call_name'        => 'required',
-                'gender'           => 'required',
-                'nim'              => 'required',
-                'place_born'       => 'required',
-                'date_born'        => 'required',
-                'origin_address'   => 'required',
-                'domicile_address' => 'required',
-                'email'            => 'required',
-                'no_wa'            => 'required',
+                'full_name'        => 'required',       
+                'nim'              => 'required',        
                 'gen'              => 'required',
             ]);
 
@@ -67,15 +59,9 @@ class CommitteeController extends Controller
             $request->validate([
                 'division_id'      => 'required',
                 'full_name'        => 'required',
-                'call_name'        => 'required',
-                'gender'           => 'required',
+               
                 'nim'              => 'required',
-                'place_born'       => 'required',
-                'date_born'        => 'required',
-                'origin_address'   => 'required',
-                'domicile_address' => 'required',
-                'email'            => 'required',
-                'no_wa'            => 'required',
+            
                 'gen'              => 'required',
             ]);
 

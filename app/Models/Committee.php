@@ -12,15 +12,7 @@ class Committee extends Model
     protected $fillable = [
         'division_id',
         'full_name',
-        'call_name',
-        'gender',
         'nim',
-        'place_born',
-        'date_born',
-        'origin_address',
-        'domicile_address',
-        'email',
-        'no_wa',
         'gen'
     ];
 
