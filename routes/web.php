@@ -40,4 +40,9 @@ Route::middleware('auth')->prefix('/core')->group(function () {
     Route::get('/leaderboard', [LeaderBoardController::class, 'showLeaderboard'])->name('leaderboard');
     Route::get('/interview', [InterviewController::class, 'showInterview'])->name('interview');
     Route::get('/setting', [SettingController::class, 'showSetting'])->name('setting');
+    Route::get('/setting/newPass', [SettingController::class, 'toNewPass']);
+    Route::put('/setting/update-password/{id}', [SettingController::class, 'updatePassword'])->name('update-password');
+    Route::put('/setting/update-user/{id}', [SettingController::class, 'updateUser'])->name('update-user');
+
+
 });

@@ -58,10 +58,8 @@ class CommitteeController extends Controller
 
             $request->validate([
                 'division_id'      => 'required',
-                'full_name'        => 'required',
-               
-                'nim'              => 'required',
-            
+                'full_name'        => 'required',               
+                'nim'              => 'required',            
                 'gen'              => 'required',
             ]);
 

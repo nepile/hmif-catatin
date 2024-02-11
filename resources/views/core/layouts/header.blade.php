@@ -19,7 +19,7 @@
                 <i class="lni lni-user"></i> Account
             </button>
             <ul class="dropdown-menu" aria-labelledby="accountDropdown">
-                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="/core/setting">Settings</a></li>
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
