@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Core;
+
 use App\Models\User;
 
 use App\Models\Division;
@@ -21,81 +22,74 @@ class SettingController extends Controller
     public function showSetting(): View
     {
         $divisions = Division::all();
-    
         $user = Auth::user();
+
         $data = [
             'title'     => 'Setting',
             'id_page'   => 'core-setting',
-            'divisions'  => $divisions,
-            'user'      => $user 
+            'user'      => $user
         ];
+
         return view('core.setting', $data);
     }
 
-    public function toNewPass(){
+    public function toNewPass()
+    {
         $data = [
-            'title'   => 'New Password',
-            'id_page' => 'core-new-pass',
+            'title'   => 'Change Password',
+            'id_page' => 'core-setting',
         ];
-    
+
         return view('core.newPass', $data);
     }
 
     public function updateUser(Request $request, $id)
     {
-        try {  
-            $user = User::findOrFail($id); 
-            $request->validate([
-            
-                'name' => 'required',
-                'nim' => 'required',
-            
-            ]);
-    
-            $user->update($request->all());   
-            return redirect()->route('setting')->with('info', 'Data Anda Berhasil Diubah');
+        $request->validate([
+            'name'  => 'required',
+            'nim'   => 'required',
+            'gen'   => 'required'
+        ]);
 
+        try {
+            $user = User::findOrFail($id);
+
+            $user->update($request->all());
+            return redirect()->route('setting')->with('info', 'Data Anda Berhasil Diubah');
         } catch (\Exception $e) {
-        
+
             Log::error('Failed to update user data: ' . $e->getMessage());
-        
+
             return back()->with('failure', 'Data Anda Gagal Diubah');
         }
     }
 
-    
-
-
     public function updatePassword(Request $request, $id)
     {
+
+        $request->validate([
+            'current_password'      => 'required',
+            'new_password'          => 'required|string|min:8',
+            'confirm_new_password'  => 'required|string|same:new_password',
+        ]);
+
         try {
-        
+
             $user = User::findOrFail($id);
 
-            $request->validate([
-                'new_password' => 'required|string|min:8',
-                'confirm_new_password' => 'required|string|same:new_password',
-            ]);
 
-          
-            $user->password = Hash::make($request->input('new_password'));
-            $user->save();
+            if (Hash::check($request->input('current_password'), $request->user()->password)) {
+                $user->password = Hash::make($request->input('new_password'));
+                $user->save();
+                return back()->with('info', 'Password Berhasil Diubah!');
+            }
 
-            return redirect()->route('setting')->with('info', 'Password Berhasil Diubah!');
+            return back()->with('failure', 'Password saat ini yang anda masukkan salah!');
         } catch (\Exception $e) {
 
             Log::error($e->getMessage());
-            
+
             return back()->with('failure', 'Gagal Mengganti Password');
         }
     }
-
-
-    
-    
-    
-    
-
-    
-
 }

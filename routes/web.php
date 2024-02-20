@@ -32,17 +32,12 @@ Route::middleware('auth')->prefix('/core')->group(function () {
         Route::get('/show-committee', [CommitteeController::class, 'showCommittee'])->name('show-committee');
         Route::put('/update-committee/{id}', [CommitteeController::class, 'updateCommittee'])->name('update-committee');
         Route::delete('/committee/delete-committee/{id}', [CommitteeController::class, 'deleteCommittee'])->name('delete-committee');
-
-
-
     });
     Route::get('/committee', [CommitteeController::class, 'showCommittee'])->name('committee');
     Route::get('/leaderboard', [LeaderBoardController::class, 'showLeaderboard'])->name('leaderboard');
     Route::get('/interview', [InterviewController::class, 'showInterview'])->name('interview');
     Route::get('/setting', [SettingController::class, 'showSetting'])->name('setting');
-    Route::get('/setting/newPass', [SettingController::class, 'toNewPass']);
+    Route::get('/setting/newPass', [SettingController::class, 'toNewPass'])->name('newPass');
     Route::put('/setting/update-password/{id}', [SettingController::class, 'updatePassword'])->name('update-password');
     Route::put('/setting/update-user/{id}', [SettingController::class, 'updateUser'])->name('update-user');
-
-
 });
