@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Core\CommitteeController;
-use App\Http\Controllers\Core\CoordinatorController;
-use App\Http\Controllers\Core\InterviewController;
-use App\Http\Controllers\Core\LeaderBoardController;
-use App\Http\Controllers\Core\OverviewController;
-use App\Http\Controllers\Core\SettingController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Core\QuestionsController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Core\SettingController;
+use App\Http\Controllers\Core\OverviewController;
+use App\Http\Controllers\Core\CommitteeController;
+use App\Http\Controllers\Core\InterviewController;
+use App\Http\Controllers\Core\CoordinatorController;
+use App\Http\Controllers\Core\LeaderBoardController;
 
 
 
@@ -33,7 +34,7 @@ Route::middleware('auth')->prefix('/core')->group(function () {
         Route::put('/update-committee/{id}', [CommitteeController::class, 'updateCommittee'])->name('update-committee');
         Route::delete('/committee/delete-committee/{id}', [CommitteeController::class, 'deleteCommittee'])->name('delete-committee');
 
-
+        
 
     });
     Route::get('/committee', [CommitteeController::class, 'showCommittee'])->name('committee');
@@ -44,5 +45,6 @@ Route::middleware('auth')->prefix('/core')->group(function () {
     Route::put('/setting/update-password/{id}', [SettingController::class, 'updatePassword'])->name('update-password');
     Route::put('/setting/update-user/{id}', [SettingController::class, 'updateUser'])->name('update-user');
 
-
+    
 });
+Route::get('/questions', [QuestionsController::class, 'index'])->name('questions');
