@@ -10,11 +10,6 @@ use App\Http\Controllers\Core\QuestionsController;
 use App\Http\Controllers\Core\CoordinatorController;
 use App\Http\Controllers\Core\LeaderBoardController;
 
-
-
-
-
-
 Route::get('/', [LoginController::class, 'showLogin'])->name('login');
 Route::post('/handle-login', [LoginController::class, 'handleLogin'])->name('handle-login');
 Route::post('/handle-logout', [LoginController::class, 'handleLogout'])->name('handle-logout');
@@ -37,9 +32,19 @@ Route::middleware('auth')->prefix('/core')->group(function () {
     Route::get('/committee', [CommitteeController::class, 'showCommittee'])->name('committee');
     Route::get('/leaderboard', [LeaderBoardController::class, 'showLeaderboard'])->name('leaderboard');
     Route::get('/interview', [InterviewController::class, 'showInterview'])->name('interview');
-    Route::get('/setting', [SettingController::class, 'showSetting'])->name('setting');
-    Route::get('/setting/newPass', [SettingController::class, 'toNewPass'])->name('newPass');
-    Route::put('/setting/update-password/{id}', [SettingController::class, 'updatePassword'])->name('update-password');
-    Route::put('/setting/update-user/{id}', [SettingController::class, 'updateUser'])->name('update-user');
+
+    Route::prefix('/question')->group(function () {
+        Route::get('/', [QuestionsController::class, 'showQuestion'])->name('questions');
+        Route::get('/detail-question/{id}', [QuestionsController::class, 'detailQuestion'])->name('detail-question');
+        Route::post('/create-question', [QuestionsController::class, 'createQuestion'])->name('create-question');
+        Route::put('/update-question/{id}', [QuestionsController::class, 'updateQuestion'])->name('update-question');
+        Route::delete('/delete-question/{id}', [QuestionsController::class, 'deleteQuestion'])->name('delete-question');
+    });
+
+    Route::prefix('/setting')->group(function () {
+        Route::get('/', [SettingController::class, 'showSetting'])->name('setting');
+        Route::get('/newPass', [SettingController::class, 'toNewPass'])->name('newPass');
+        Route::put('/update-password/{id}', [SettingController::class, 'updatePassword'])->name('update-password');
+        Route::put('/update-user/{id}', [SettingController::class, 'updateUser'])->name('update-user');
+    });
 });
-    Route::get('/questions', [QuestionsController::class, 'index'])->name('questions');
