@@ -38,6 +38,12 @@
                 <span>Catatin Interview</span>
             </a>
         </li>
+        <li class="sidebar-item {{ $id_page == 'core-questions' ? 'sidebar-active' : null }}">
+            <a href="{{ route('questions') }}" class="sidebar-link">
+                <i class="lni lni-question-circle"></i>
+                <span>Catatin Interview</span>
+            </a>
+        </li>
         <li class="sidebar-item {{ $id_page == 'core-setting' ? 'sidebar-active' : null }}">
             <a href="{{ route('setting') }}" class="sidebar-link">
                 <i class="lni lni-cog"></i>
