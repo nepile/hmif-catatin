@@ -47,4 +47,6 @@ Route::middleware('auth')->prefix('/core')->group(function () {
         Route::put('/update-password/{id}', [SettingController::class, 'updatePassword'])->name('update-password');
         Route::put('/update-user/{id}', [SettingController::class, 'updateUser'])->name('update-user');
     });
+
+    
 });

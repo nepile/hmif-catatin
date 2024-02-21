@@ -26,3 +26,4 @@ handleResponsiveNavbar();
 
 
 window.addEventListener("resize", handleResponsiveNavbar);
+

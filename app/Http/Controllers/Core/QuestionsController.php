@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Core;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Exception;
 use App\Models\Division;
 use App\Models\Question;
-use Exception;
+use App\Models\Committee;
+use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 
 class QuestionsController extends Controller
 {
@@ -21,10 +22,13 @@ class QuestionsController extends Controller
     public function showQuestion(): View
     {
         $divisions = Division::all();
+      
+      
         $data = [
             'title'     => 'Questions',
             'id_page'   => 'core-questions',
-            'divisions' => $divisions
+            'divisions' => $divisions,
+          
         ];
         return view('core.questions', $data);
     }
