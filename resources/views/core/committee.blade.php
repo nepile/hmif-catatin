@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="d-flex mb-4 justify-content-between align-items-center">
             <div class="col-lg-9">
-                <button class="btn bg-favorite">Import Data</button>
+                {{-- <button class="btn bg-favorite">Import Data</button> --}}
                 <button class="btn bg-favorite" data-bs-toggle="modal" data-bs-target="#create-committee">Create Committee</button>
             </div>
             <div class="col-lg-3 d-flex">
@@ -22,7 +22,6 @@
                         <th>No.</th>
                         <th>NIM</th>
                         <th>Name</th>
-                        <th>Division</th>
                         <th>Gen</th>
                         <th>Manage</th>
                     </tr>
@@ -33,7 +32,6 @@
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $committee->nim }}</td>
                         <td>{{ $committee->full_name }}</td>
-                        <td>{{ $committee->division->name }}</td>
                         <td>{{ $committee->gen }}</td>
                         <td>
 
@@ -50,15 +48,6 @@
                                         {{-- Update Committee Form --}}
                                         <div class="my-2">
                                             <input type="text" value="{{ $committee->full_name }}" class="form-control" name="full_name" placeholder="Full Name" required>
-                                        </div>
-                                    
-                                        <div class="my-2">
-                                            <select name="division_id" required class="form-control">
-                                                <option value="{{ $committee->division_id }}" class="text-primary">{{ $committee->division->name }}</option>
-                                                @foreach ($divisions as $division)
-                                                    <option value="{{ $division->id }}">{{ $division->name }}</option>
-                                                @endforeach
-                                            </select>
                                         </div>
                                      
                                         <div class="my-2">
@@ -108,6 +97,7 @@
         </div>
     </div>
 </div>
+
 <!-- Create Committee Modal -->
 <div class="modal fade" id="create-committee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -116,14 +106,6 @@
             <div class="modal-body">
                 <div class="my-2">    
                     <input type="text" class="form-control" name="full_name" placeholder="Full Name" required>
-                </div>
-                <div class="my-2">    
-                    <select name="division_id" required class="form-control">
-                        <option value="">Select Division</option>
-                        @foreach ($divisions as $division)
-                            <option value="{{ $division->id }}">{{ $division->name }}</option>
-                        @endforeach
-                    </select>
                 </div>
              
                 <div class="my-2">    

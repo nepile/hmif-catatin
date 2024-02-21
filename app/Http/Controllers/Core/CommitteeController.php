@@ -10,6 +10,7 @@ use App\Models\Division;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Log;
+
 class CommitteeController extends Controller
 {
     /**
@@ -26,7 +27,6 @@ class CommitteeController extends Controller
             'title'      => 'Committee',
             'id_page'    => 'core-committee',
             'committees' => $committees,
-            'divisions'  => $divisions,
         ];
 
         return view('core.committee', $data);
@@ -34,13 +34,12 @@ class CommitteeController extends Controller
 
     public function createCommittee(Request $request)
     {
+        $request->validate([
+            'full_name'        => 'required',
+            'nim'              => 'required',
+            'gen'              => 'required',
+        ]);
         try {
-            $request->validate([
-                'division_id'      => 'required',
-                'full_name'        => 'required',       
-                'nim'              => 'required',        
-                'gen'              => 'required',
-            ]);
 
             Committee::create($request->all());
 
@@ -53,15 +52,15 @@ class CommitteeController extends Controller
 
     public function updateCommittee(Request $request, $id)
     {
+        $request->validate([
+            'division_id'      => 'required',
+            'full_name'        => 'required',
+            'nim'              => 'required',
+            'gen'              => 'required',
+        ]);
         try {
             $committee = Committee::findOrFail($id);
 
-            $request->validate([
-                'division_id'      => 'required',
-                'full_name'        => 'required',               
-                'nim'              => 'required',            
-                'gen'              => 'required',
-            ]);
 
             $committee->update($request->all());
 
@@ -82,7 +81,7 @@ class CommitteeController extends Controller
         } catch (ModelNotFoundException $e) {
             return back()->with('failure', 'Error: Committee not found');
         } catch (\Exception $e) {
-           
+
             Log::error($e->getMessage());
             return back()->with('failure', 'Error: Terjadi kesalahan teknis saat menghapus data');
         }

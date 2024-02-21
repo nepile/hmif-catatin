@@ -21,7 +21,6 @@
                     <th>No.</th>
                     <th>NIM</th>
                     <th>Name</th>
-                    <th>Division</th>
                     <th>Gen</th>
                     <th>Manage</th>
                 </tr>
@@ -32,7 +31,6 @@
                     <td>{{ $key + 1 }}</td>
                     <td>{{ $committee->nim }}</td>
                     <td>{{ $committee->full_name }}</td>
-                    <td>{{ $committee->division->name }}</td>
                     <td>{{ $committee->gen }}</td>
                     <td>
 
