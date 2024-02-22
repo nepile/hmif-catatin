@@ -36,9 +36,12 @@ Route::middleware('auth')->prefix('/core')->group(function () {
     Route::prefix('/question')->group(function () {
         Route::get('/', [QuestionsController::class, 'showQuestion'])->name('questions');
         Route::get('/detail-question/{id}', [QuestionsController::class, 'detailQuestion'])->name('detail-question');
+        Route::get('/detail-question/{id}/create-question', [QuestionsController::class, 'showCreateQuestion'])->name('show-create-question');
         Route::post('/create-question', [QuestionsController::class, 'createQuestion'])->name('create-question');
         Route::put('/update-question/{id}', [QuestionsController::class, 'updateQuestion'])->name('update-question');
         Route::delete('/delete-question/{id}', [QuestionsController::class, 'deleteQuestion'])->name('delete-question');
+        Route::post('/question/create', [QuestionsController::class, 'createQuestion'])->name('create-question');
+
     });
 
     Route::prefix('/setting')->group(function () {

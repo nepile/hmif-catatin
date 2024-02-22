@@ -19,7 +19,7 @@ class QuestionsController extends Controller
      * 
      * @return View
      */
-    public function showQuestion(): View
+    public function showQuestion(Request $request): View
     {
         $divisions = Division::all();
       
@@ -28,6 +28,7 @@ class QuestionsController extends Controller
             'title'     => 'Questions',
             'id_page'   => 'core-questions',
             'divisions' => $divisions,
+            // 'division_id' => $request->route('id')
           
         ];
         return view('core.questions', $data);
@@ -46,6 +47,7 @@ class QuestionsController extends Controller
             'id_page'   => 'core-questions',
             'division'  => Division::where('id', $id)->value('name'),
             'questions' => Question::where('id', $id)->get(),
+            'id'        => $id, // Pass the $id variable to the view
         ];
 
         return view('core.detail-question', $data);
@@ -66,18 +68,20 @@ class QuestionsController extends Controller
      * @param Request
      * @return RedirectResponse
      */
-    public function createQuestion(Request $request): RedirectResponse
-    {
-        $this->questionValidation($request);
+    // public function createQuestion(Request $request): RedirectResponse
+    // {
+    //     $this->questionValidation($request);
 
-        try {
-            Question::create($request->all());
-            return back()->with('success', 'Berhasil membuat pertanyaan');
-        } catch (Exception $e) {
-            Log::error($e->getMessage());
-            return back()->with('error', 'Gagal membuat pertanyaan');
-        }
-    }
+    //     try {
+    //         Question::create($request->all());
+    //         return back()->with('success', 'Berhasil membuat pertanyaan');
+    //     } catch (Exception $e) {
+    //         Log::error($e->getMessage());
+    //         return back()->with('error', 'Gagal membuat pertanyaan');
+    //     }
+    // }
+
+    
 
     /**
      * method update question
@@ -114,4 +118,49 @@ class QuestionsController extends Controller
             return back()->with('failure', 'Gagal mengahpus pertanyaan');
         }
     }
+
+    public function showCreateQuestion($id)
+{
+    $data = [
+        'title'     => 'Questions',
+        'id_page'   => 'core-questions',
+        'id'        => $id, 
+    ];
+    return view('core.create-question', $data); 
+}
+
+public function createQuestion(Request $request): RedirectResponse
+{
+    $request->validate([
+        'question.*' => 'required',
+        'max_point.*' => 'required|numeric',
+        'division_id' => 'required',
+    ]);
+
+    $questions = $request->input('question');
+    $maxPoints = $request->input('max_point');
+    $divisionId = $request->input('division_id');
+
+    $data = [];
+    foreach ($questions as $key => $question) {
+        $data[] = [
+            'question' => $question,
+            'division_id' => $divisionId,
+            'max_point' => $maxPoints[$key],
+        ];
+    }
+
+    try {
+        Question::insert($data);
+        return back()->with('success', 'Berhasil membuat pertanyaan');
+    } catch (\Exception $e) {
+        Log::error($e->getMessage());
+        return back()->with('error', 'Gagal membuat pertanyaan');
+    }
+}
+    
+
+
+  
+
 }

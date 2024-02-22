@@ -27,3 +27,28 @@ handleResponsiveNavbar();
 
 window.addEventListener("resize", handleResponsiveNavbar);
 
+
+
+
+function addQuestion() {
+  var questionContainer = document.getElementById('question-container');
+  var questionInputContainer = questionContainer.querySelector('.row.question-input');
+  
+  var newQuestionInput = document.createElement('div');
+  newQuestionInput.classList.add('col-md-6', 'mb-3');
+  newQuestionInput.innerHTML = `
+      <label for="question" class="form-label">Pertanyaan</label>
+      <input type="text" class="form-control" name="question[]" placeholder="Silahkan Isi Pertanyaan" required>
+  `;
+  
+  var newMaxPointInput = document.createElement('div');
+  newMaxPointInput.classList.add('col-md-6', 'mb-3');
+  newMaxPointInput.innerHTML = `
+      <label for="point" class="form-label">Bobot</label>
+      <input type="text" class="form-control" name="max_point[]" placeholder="Bobot" required>
+  `;
+
+  questionInputContainer.appendChild(newQuestionInput);
+  questionInputContainer.appendChild(newMaxPointInput);
+}
+

@@ -108,4 +108,5 @@
     );
 </script>
 <script src="{{ asset('js/core.js') }}"></script>
+
 @endpush

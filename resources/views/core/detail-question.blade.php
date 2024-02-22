@@ -7,7 +7,10 @@
             <div class="card-body">
                 <h4>{{ $division }}</h4>
                 <a href="{{ route('questions') }}" class="btn border border-dark mt-2">Back</a>
-                <button class="btn bg-warning mt-2" data-bs-toggle="modal" data-bs-target="#create">Create Question</button>
+              
+                <a href="{{ route('show-create-question', ['id' => $id]) }}" class="btn bg-warning mt-2">Create Question</a>
+
+
             </div>
         </div>
     </div>
