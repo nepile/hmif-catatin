@@ -7,7 +7,7 @@ use App\Models\Committee;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\Question;
 class InterviewController extends Controller
 {
     /**
@@ -37,5 +37,22 @@ class InterviewController extends Controller
     
         return view('core.interview', $data);
     }
+    public function showInterviewNow($id)
+    {
+     
+        $divisionId = auth()->user()->division_id;
+        $questions = Question::where('division_id', $divisionId)->get();
+        $committee = Committee::findOrFail($id);
+        $data = [
+            'title'      => 'Interview',
+            'id_page'    => 'core-interview',
+            'division_id' => $divisionId,
+            'questions'  => $questions,
+            'committee'  => $committee
+        ];
+        return view('core.interview-now', $data);
+    }
+    
+
     
 }

@@ -32,6 +32,8 @@ Route::middleware('auth')->prefix('/core')->group(function () {
     Route::get('/committee', [CommitteeController::class, 'showCommittee'])->name('committee');
     Route::get('/leaderboard', [LeaderBoardController::class, 'showLeaderboard'])->name('leaderboard');
     Route::get('/interview', [InterviewController::class, 'showInterview'])->name('interview');
+    Route::get('interview/interview-now/{id}', [InterviewController::class, 'showInterviewNow'])->name('interview.now');
+
 
     Route::prefix('/question')->group(function () {
         Route::get('/', [QuestionsController::class, 'showQuestion'])->name('questions');
