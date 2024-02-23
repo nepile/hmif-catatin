@@ -62,7 +62,7 @@ class UserSeeder extends Seeder
                 'role_id'   => 2,
                 'division_id'  => 5,
                 'gen'       => '2023',
-                'password'  => Hash::make('itdays_bayu'),
+                'password'  => Hash::make('itdays_reva'),
             ],
             [
                 'name'      => 'Jordan',

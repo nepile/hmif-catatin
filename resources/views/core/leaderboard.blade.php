@@ -23,14 +23,32 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $committee_ids = [];
+                                @endphp
                                 @foreach ($points as $p)
-                                    @if($d->id == $p->division_id) 
+                                    @if($d->id == $p->division_id && !in_array($p->committee_id, $committee_ids))
                                     <tr>
                                         <td>{{ $p->committee->nim }}</td>
                                         <td>{{ $p->committee->full_name }}</td>
                                         <td>{{ $p->committee->gen }}</td>
-                                        <td><span class="text-success">{{ $p->total_point }}</span> /100</td>
+                                        <td>
+                                            @php
+                                                $total_final_score = 0;
+                                            @endphp
+                                            @foreach ($points as $point)
+                                                @if ($point->committee_id == $p->committee_id)
+                                                    @php
+                                                        $total_final_score += $point->total_point;
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+                                            <span class="text-success">{{ $total_final_score }}</span> /100
+                                        </td>
                                     </tr>
+                                    @php
+                                        $committee_ids[] = $p->committee_id;
+                                    @endphp
                                     @endif
                                 @endforeach
                             </tbody>
