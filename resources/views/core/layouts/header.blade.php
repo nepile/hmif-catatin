@@ -6,7 +6,7 @@
             <div class="mt-2">
                 <h5 style="font-weight: bold">{{ auth()->user()->name }}</h5>
                 <p>
-                    {{ auth()->user()->role->name }}
+                    {{ auth()->user()->role->name }} @if(auth()->user()->role->name == 'Coordinator') {{ auth()->user()->division->name }} @endif
                 </p>
             </div>
         </div>

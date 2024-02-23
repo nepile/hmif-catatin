@@ -9,6 +9,10 @@ a {
     text-decoration: none;
 }
 
+textarea {
+    resize: none;
+}
+
 .bg-favorite {
     background: #072C50;
     color: #fff;

@@ -7,7 +7,11 @@ use App\Models\Committee;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Utils\SearchData;
+use App\Models\Point;
 use App\Models\Question;
+use Illuminate\Support\Facades\Log;
+
 class InterviewController extends Controller
 {
     /**
@@ -18,31 +22,33 @@ class InterviewController extends Controller
     public function showInterview(Request $request): View
     {
         $divisions = Division::all();
-        $searchQuery = $request->query('query');
-    
-        $committees = Committee::query()
-            ->when($searchQuery, function ($query) use ($searchQuery) {
-                $query->where('nim', 'like', "%{$searchQuery}%")
-                      ->orWhere('full_name', 'like', "%{$searchQuery}%");
-            })
-            ->get();
-    
+        $searchQuery = $request->input('query');
+
+        $requirements = [
+            'model'     => new Committee,
+            'field'     => is_numeric($request->input('query')) ? 'nim' : 'full_name',
+            'key'       => $request->input('query'),
+        ];
+
+
         $data = [
             'title'      => 'Interview',
             'id_page'    => 'core-interview',
             'divisions'  => $divisions,
-            'committees' => $committees,
+            'committees' => SearchData::find($requirements),
             'query'      => $searchQuery,
         ];
-    
+
         return view('core.interview', $data);
     }
     public function showInterviewNow($id)
     {
-     
+
         $divisionId = auth()->user()->division_id;
+
         $questions = Question::where('division_id', $divisionId)->get();
-        $committee = Committee::findOrFail($id);
+        $committee = Committee::where('id', $id)->first();
+
         $data = [
             'title'      => 'Interview',
             'id_page'    => 'core-interview',
@@ -52,7 +58,27 @@ class InterviewController extends Controller
         ];
         return view('core.interview-now', $data);
     }
-    
+    public function saveInterview(Request $request, $id)
+    {
+        $questions = $request->input('question_id');
+        $points = $request->input('point');
 
-    
+        $data = [];
+        foreach ($questions as $key => $question) {
+            $data[] = [
+                'committee_id' => $id,
+                'question_id' => $question,
+                'division_id' => auth()->user()->division_id,
+                'point' => $points[$key],
+            ];
+        }
+
+        try {
+            Point::insert($data);
+            return redirect()->route('leaderboard')->with('success', 'Berhasil menyimpan interview');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return back()->with('error', 'Gagal membuat pertanyaan');
+        }
+    }
 }

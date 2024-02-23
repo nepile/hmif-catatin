@@ -38,9 +38,9 @@
             </p>
 
             <div class="form-outline mb-4">
-              <label class="form-label" for="nimUser">NIM</label>
-              <input type="text" id="nimUser" name="nim" value="{{ old('nim') }}" class="form-control @error('nim') is-invalid @enderror form-control-lg" style="font-size:17px;" placeholder="Enter your nim" />
-              @error('nim')
+              <label class="form-label" for="nimUser">Username</label>
+              <input type="text" id="nimUser" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror form-control-lg" style="font-size:17px;" placeholder="Enter your username" />
+              @error('name')
                 <span class="text-danger" style="font-size: 13px">{{ $message }}</span>
               @enderror
             </div>

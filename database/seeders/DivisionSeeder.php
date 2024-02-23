@@ -26,6 +26,26 @@ class DivisionSeeder extends Seeder
                 'name'      => 'Konsumsi',
                 'event_id'  => 1,
             ],
+            [
+                'name'      => 'Perlengkapan',
+                'event_id'  => 1,
+            ],
+            [
+                'name'      => 'PDD',
+                'event_id'  => 1,
+            ],
+            [
+                'name'      => 'USDA',
+                'event_id'  => 1,
+            ],
+            [
+                'name'      => 'Pendaftaran',
+                'event_id'  => 1,
+            ],
+            [
+                'name'      => 'Sponsorship',
+                'event_id'  => 1,
+            ],
         ]);
     }
 }

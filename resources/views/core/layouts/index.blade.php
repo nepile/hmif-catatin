@@ -28,56 +28,59 @@
 @push('core-script')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    var lineChartData = {
-        labels: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        ],
-        datasets: [
-        {
-            label: "Monthly Sales",
-            borderColor: "black",
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: false,
-        },
-        ],
-    };
+    // var lineChartData = {
+    //     labels: [
+    //     "January",
+    //     "February",
+    //     "March",
+    //     "April",
+    //     "May",
+    //     "June",
+    //     "July",
+    //     ],
+    //     datasets: [
+    //     {
+    //         label: "Monthly Sales",
+    //         borderColor: "black",
+    //         data: [65, 59, 80, 81, 56, 55, 40],
+    //         fill: false,
+    //     },
+    //     ],
+    // };
     
-    var lineChartOptions = {
-        scales: {
-            x: [
-            {
-                ticks: {
-                    maxRotation: 0,
-                    minRotation: 0,
-                },
-            },
-            ],
-        },
-    };
+    // var lineChartOptions = {
+    //     scales: {
+    //         x: [
+    //         {
+    //             ticks: {
+    //                 maxRotation: 0,
+    //                 minRotation: 0,
+    //             },
+    //         },
+    //         ],
+    // //     },
+    // // };
     
-    var lineChart = new Chart(
-    document.getElementById("lineChart").getContext("2d"),
-    {
-        type: "line",
-        data: lineChartData,
-        options: lineChartOptions,
-    }
-    );
+    // var lineChart = new Chart(
+    // document.getElementById("lineChart").getContext("2d"),
+    // {
+    //     type: "line",
+    //     data: lineChartData,
+    //     options: lineChartOptions,
+    // }
+    // );
     
     // konfigurasi bar chart
     var barChartData = {
         labels: [
-        "Product A",
-        "Product B",
-        "Product C",
-        "Product D",
-        "Product E",
+        "Acara",
+        "Humas",
+        "Konsumsi",
+        "Perlengkapan",
+        "PDD",
+        "USDA",
+        "Pendaftaran",
+        "Sponsorship",
         ],
         datasets: [
         {

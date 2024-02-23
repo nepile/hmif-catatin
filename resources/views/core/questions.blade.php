@@ -2,7 +2,7 @@
 
 @section('core-content')
     {{-- <p>questions</p> --}}
-    <div class="row justify-content-center">
+    <div class="row">
     @foreach ($divisions as $division)
     <div class="col-lg-4">
         <div class="card mb-3 bg-dark text-white" style="max-width: 540px;">

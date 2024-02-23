@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('points', function (Blueprint $table) {
             $table->id();
             $table->foreignId('committee_id')->constrained('committees', 'id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('division_id')->constrained('divisions', 'id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('question_id')->constrained('questions', 'id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->bigInteger('point');
             $table->timestamps();

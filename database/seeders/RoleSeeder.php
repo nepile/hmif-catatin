@@ -14,10 +14,8 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         DB::table('roles')->insert([
-            ['name'     => 'Badan Pengurus Harian'], // 1
-            ['name'     => 'Divisi Web Holder'], // 2
-            ['name'     => 'CO Event / Panitia Inti'], // 3
-            ['name'     => 'Division Coordinator'], // 4
+            ['name'     => 'SuperAdmin'], // 1
+            ['name'     => 'Coordinator'], // 4
         ]);
     }
 }

@@ -22,14 +22,14 @@ class QuestionsController extends Controller
     public function showQuestion(Request $request): View
     {
         $divisions = Division::all();
-      
-      
+
+
         $data = [
             'title'     => 'Questions',
             'id_page'   => 'core-questions',
             'divisions' => $divisions,
             // 'division_id' => $request->route('id')
-          
+
         ];
         return view('core.questions', $data);
     }
@@ -43,11 +43,12 @@ class QuestionsController extends Controller
     public function detailQuestion($id): View
     {
         $data = [
-            'title'     => 'Question' . ' Question',
+            'title'     => 'Question',
             'id_page'   => 'core-questions',
             'division'  => Division::where('id', $id)->value('name'),
-            'questions' => Question::where('id', $id)->get(),
+            'questions' => Question::where('division_id', $id)->get(),
             'id'        => $id, // Pass the $id variable to the view
+            'maxPoint'  => Question::where('division_id', $id)->sum('max_point'),
         ];
 
         return view('core.detail-question', $data);
@@ -57,31 +58,9 @@ class QuestionsController extends Controller
     {
         $reqs->validate([
             'question'      => 'required',
-            'division_id'   => 'required',
             'max_point'     => 'required'
         ]);
     }
-
-    /**
-     * method cerate question
-     * 
-     * @param Request
-     * @return RedirectResponse
-     */
-    // public function createQuestion(Request $request): RedirectResponse
-    // {
-    //     $this->questionValidation($request);
-
-    //     try {
-    //         Question::create($request->all());
-    //         return back()->with('success', 'Berhasil membuat pertanyaan');
-    //     } catch (Exception $e) {
-    //         Log::error($e->getMessage());
-    //         return back()->with('error', 'Gagal membuat pertanyaan');
-    //     }
-    // }
-
-    
 
     /**
      * method update question
@@ -93,9 +72,33 @@ class QuestionsController extends Controller
     public function updateQuestion(Request $request, $id): RedirectResponse
     {
         $this->questionValidation($request);
+        $maxPoint = $request->input('max_point');
+        $cPoint = $request->input('current_point');
+        $validationPoint = $maxPoint + $cPoint;
+        $questionValidation = Question::where('division_id', $request->input('division_id'))->count();
+        $question = Question::where('id', $id);
+
         try {
-            Question::where('id', $id)->update($request->all());
-            return back()->with('info', 'Berhasil memperbarui pertanyaan');
+            if ($questionValidation == 1) {
+                if ($maxPoint <= 100) {
+                    $question->update([
+                        'question'      => $request->input('question'),
+                        'max_point'     => $request->input('max_point')
+                    ]);
+                    return back()->with('info', 'Berhasil memperbarui pertanyaan');
+                }
+                return back()->with('failure', 'Point yang anda masukkan melebihi batas 100pt');
+            } else if ($questionValidation > 1) {
+                if ($validationPoint <= 100) {
+                    $question->update([
+                        'question'      => $request->input('question'),
+                        'max_point'     => $request->input('max_point')
+                    ]);
+                    return back()->with('info', 'Berhasil memperbarui pertanyaan');
+                }
+            }
+
+            return back()->with('failure', 'Point yang anda masukkan dengan kalkulasi point saat ini melebihi batas 100pt');
         } catch (Exception $e) {
             Log::error($e->getMessage());
             return back()->with('failure', 'Gagal memperbarui pertanyaan');
@@ -120,47 +123,50 @@ class QuestionsController extends Controller
     }
 
     public function showCreateQuestion($id)
-{
-    $data = [
-        'title'     => 'Questions',
-        'id_page'   => 'core-questions',
-        'id'        => $id, 
-    ];
-    return view('core.create-question', $data); 
-}
-
-public function createQuestion(Request $request): RedirectResponse
-{
-    $request->validate([
-        'question.*' => 'required',
-        'max_point.*' => 'required|numeric',
-        'division_id' => 'required',
-    ]);
-
-    $questions = $request->input('question');
-    $maxPoints = $request->input('max_point');
-    $divisionId = $request->input('division_id');
-
-    $data = [];
-    foreach ($questions as $key => $question) {
-        $data[] = [
-            'question' => $question,
-            'division_id' => $divisionId,
-            'max_point' => $maxPoints[$key],
+    {
+        $data = [
+            'title'     => 'Questions',
+            'id_page'   => 'core-questions',
+            'id'        => $id,
+            'maxPoint'  => Question::where('division_id', $id)->sum('max_point'),
         ];
+        return view('core.create-question', $data);
     }
 
-    try {
-        Question::insert($data);
-        return back()->with('success', 'Berhasil membuat pertanyaan');
-    } catch (\Exception $e) {
-        Log::error($e->getMessage());
-        return back()->with('error', 'Gagal membuat pertanyaan');
+    public function createQuestion(Request $request): RedirectResponse
+    {
+        $cPoint = $request->input('cPoint');
+        $request->validate([
+            'question.*' => 'required',
+            'max_point.*' => 'required|numeric',
+            'division_id' => 'required',
+        ]);
+
+        $questions = $request->input('question');
+        $maxPoints = $request->input('max_point');
+        $divisionId = $request->input('division_id');
+
+        $data = [];
+        foreach ($questions as $key => $question) {
+            $data[] = [
+                'question' => $question,
+                'division_id' => $divisionId,
+                'max_point' => $maxPoints[$key],
+            ];
+
+            $validationPoint = $maxPoints[$key] + $cPoint;
+        }
+
+        try {
+            if ($validationPoint <= 100) {
+                Question::insert($data);
+                return redirect()->route('detail-question', $request->input('division_id'))->with('success', 'Berhasil membuat pertanyaan');
+            }
+
+            return back()->with('failure', 'Point yang anda masukkan dengan kalkulasi point saat ini melebihi batas 100pt');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return back()->with('error', 'Gagal membuat pertanyaan');
+        }
     }
-}
-    
-
-
-  
-
 }

@@ -14,6 +14,7 @@
                 <span>Catatin Overview</span>
             </a>
         </li>
+        @if (auth()->user()->role->name == 'SuperAdmin')
         <li class="sidebar-item {{ $id_page == 'core-coordinator' ? 'sidebar-active' : null }}">
             <a href="{{ route('coordinator') }}" class="sidebar-link">
                 <i class="lni lni-coral"></i>
@@ -26,12 +27,8 @@
                 <span>Catatin Committees</span>
             </a>
         </li>
-        <li class="sidebar-item {{ $id_page == 'core-leaderboard' ? 'sidebar-active' : null }}">
-            <a href="{{ route('leaderboard') }}" class="sidebar-link">
-                <i class="lni lni-graduation"></i>
-                <span>Catatin Leaderboard</span>
-            </a>
-        </li>
+        @endif
+        
         <li class="sidebar-item {{ $id_page == 'core-interview' ? 'sidebar-active' : null }}">
             <a href="{{ route('interview') }}" class="sidebar-link">
                 <i class="lni lni-clipboard"></i>
@@ -41,7 +38,13 @@
         <li class="sidebar-item {{ $id_page == 'core-questions' ? 'sidebar-active' : null }}">
             <a href="{{ route('questions') }}" class="sidebar-link">
                 <i class="lni lni-question-circle"></i>
-                <span>Catatin Interview</span>
+                <span>Catatin Question</span>
+            </a>
+        </li>
+        <li class="sidebar-item {{ $id_page == 'core-leaderboard' ? 'sidebar-active' : null }}">
+            <a href="{{ route('leaderboard') }}" class="sidebar-link">
+                <i class="lni lni-graduation"></i>
+                <span>Catatin Leaderboard</span>
             </a>
         </li>
         <li class="sidebar-item {{ $id_page == 'core-setting' ? 'sidebar-active' : null }}">

@@ -34,7 +34,7 @@ class LoginController extends Controller
     public function handleLogin(Request $request): RedirectResponse
     {
         $credentials = $this->validate($request, [
-            'nim'       => 'required',
+            'name'       => 'required',
             'password'  => 'required'
         ]);
 

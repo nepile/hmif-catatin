@@ -12,6 +12,7 @@ class Point extends Model
     protected $fillable = [
         'committee_id',
         'question_id',
+        'division_id',
         'point'
     ];
 
